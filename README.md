@@ -1,4 +1,6 @@
 🗓️ Event Scheduler - Flask Web Application
+
+
 The Event Scheduler is a simple yet functional web application that allows users to create, manage, and track events easily. It provides both a user-friendly web interface and REST API access for event management.This project is ideal for understanding how to build a real-world Flask application with basic backend logic, form handling, API development, and background tasks.
 
 📦 Project Overview
