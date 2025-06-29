@@ -1,0 +1,110 @@
+<!DOCTYPE html> <!--HTML5 document declaration-->
+<html>
+<head>
+    <title>Event Scheduler</title>  <!--Page Title-->
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .event-box {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px auto;
+            width: 80%;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            text-align: left;
+            cursor: pointer;
+        }
+        .details {
+            display: none;
+            margin-top: 10px;
+        }
+        .btn {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            margin: 5px 5px 5px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .delete-btn {
+            background-color: #f44336;
+        }
+        .delete-btn:hover {
+            background-color: #d32f2f;
+        }
+        .completed-btn {
+            background-color: #2196F3;
+        }
+        .completed-btn:hover {
+            background-color: #1976D2;
+        }
+        .completed {
+            background-color: #d4edda;
+        }
+        .upcoming {
+            background-color: #fff3cd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Event Scheduler</h1> <!--Page Heading -->
+    <!--Action buttons -->
+    <a href="/create"><button class="btn">Add Event</button></a>
+    <button class="btn" onclick="window.location.href='/'">All</button>
+    <button class="btn" onclick="window.location.href='/filter/upcoming'">Upcoming</button>
+    <button class="btn" onclick="window.location.href='/filter/completed'">Completed</button>
+
+    {% if alert_msg %}  <!--Show alert if present-->
+    <script>
+        alert("{{ alert_msg }}");  
+    </script>
+    {% endif %}
+
+    <div>
+        {% for event in events %} <!--Loop through events-->
+        <div class="event-box {{ 'completed' if event.status == 'Completed' else 'upcoming' }}" onclick="toggleDetails({{ loop.index0 }})">
+            <h3>{{ event.title }}</h3> <!--event title-->
+            <div class="details" id="details-{{ loop.index0 }}"> Hidden details section
+                <p><strong>Description:</strong> {{ event.Description }}</p>
+                <p><strong>Start:</strong> {{ event.start_time }}</p>
+                <p><strong>End:</strong> {{ event.end_time }}</p>
+                <p><strong>Status:</strong> {{ event.status }}</p>
+
+                {% if event.status != 'Completed' %} <!-- Show edit and complete buttons only if event not completed-->
+                <form action="/edit/{{ loop.index0 }}" method="get" style="display:inline;">
+                    <button class="btn">Edit</button> <!--edit button-->
+                </form>
+                <form action="/mark_completed/{{ loop.index0 }}" method="post" style="display:inline;">
+                    <button class="btn completed-btn">Mark Completed</button>
+                </form>
+                {% endif %}
+
+                <form action="/delete/{{ loop.index0 }}" method="post" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this event?')">
+                    <button class="btn delete-btn">Delete</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+<script>
+function toggleDetails(index) {
+    var details = document.getElementById('details-' + index);
+    if (details.style.display === "none" || details.style.display === "") {
+        details.style.display = "block"; //show details
+    } else {
+        details.style.display = "none";  //hide details
+    }
+}
+</script>
+</body>
+</html>

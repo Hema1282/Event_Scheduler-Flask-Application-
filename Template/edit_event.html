@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Event</title>
+    <style>
+        body {
+            background-color: #e0ffff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            margin: 50px auto;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+        }
+        input, textarea {
+            width: 90%;
+            padding: 8px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Edit Event</h1>
+    <form method="POST">
+        <input type="text" name="title" value="{{ event.title }}" required><br>
+        <textarea name="description" required>{{ event.Description }}</textarea><br>
+        <input type="datetime-local" name="start_time" value="{{ event.start_time|replace(' ', 'T') }}" required><br>
+        <input type="datetime-local" name="end_time" value="{{ event.end_time|replace(' ', 'T') }}" required><br>
+        <button class="btn" type="submit">Update Event</button>
+    </form>
+</body>
+</html>
