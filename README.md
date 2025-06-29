@@ -1,122 +1,93 @@
 🗓️ Event Scheduler - Flask Web Application
-A simple yet functional Event Scheduler web application built with Flask, featuring:
+The Event Scheduler is a simple yet functional web application that allows users to create, manage, and track events easily. It provides both a user-friendly web interface and REST API access for event management.
 
-✅ Event Creation & Management
-✅ Upcoming & Completed Event Filters
-✅ REST API for external access (tested via Postman)
-✅ Event Reminders for upcoming events (within 24 hours)
-✅ Persistent JSON storage for events
+This project is ideal for understanding how to build a real-world Flask application with basic backend logic, form handling, API development, and background tasks.
 
-📦 Project Features
-Add, edit, delete events via Web UI
+📦 Project Overview
+The Event Scheduler enables users to:
 
-Mark events as completed
+Add new events with details like title, description, start time, and end time.
 
-Filter events (All, Upcoming, Completed)
+View all scheduled events in one place.
 
-JSON-based data storage (no database setup required)
+Edit or delete events when required.
 
-REST API with endpoints for integration
+Mark events as completed once finished.
 
-Background reminder system alerts for upcoming events
+Filter events based on their status: Upcoming or Completed.
 
-Simple, user-friendly HTML interface
+Receive console reminders for events that are due within the next 24 hours.
 
-⚙️ Tech Stack
-Python 3
+Access and interact with the system programmatically through REST API endpoints.
 
-Flask
+Event details are stored persistently using a simple JSON file, so the data remains intact even after restarting the application.
 
-HTML, CSS (Basic Styling)
+⚙️ Technology Stack
+Python
 
-JSON for data storage
+Flask (Web framework)
 
-Postman for API testing
+HTML, CSS (Basic interface)
 
-Threading for background reminders
+JSON (For data storage)
 
-🚀 Getting Started
-1. Clone the Repository
-bash
-Copy
-Edit
-git clone your-repo-link
-cd event-scheduler
-2. Install Dependencies
-bash
-Copy
-Edit
-pip install flask
-3. Run the Application
-bash
-Copy
-Edit
-python app.py
-4. Access the Application
-Open your browser and go to:
-http://127.0.0.1:5000 (or your-local-url)
+Threading (For background reminders)
 
-🔌 API Endpoints
-1. Get All Events
-http
-Copy
-Edit
-GET /api/events
-2. Create Event
-http
-Copy
-Edit
-POST /api/events
-Request Body (JSON):
+Postman (For API testing)
 
-json
-Copy
-Edit
-{
-  "title": "Meeting",
-  "Description": "Project Discussion",
-  "start_time": "YYYY-MM-DD HH:MM",
-  "end_time": "YYYY-MM-DD HH:MM"
-}
-3. Update Event
-http
-Copy
-Edit
-PUT /api/events/<index>
-4. Delete Event
-http
-Copy
-Edit
-DELETE /api/events/<index>
-5. Get Upcoming Events
-http
-Copy
-Edit
-GET /api/events/upcoming
-6. Get Completed Events
-http
-Copy
-Edit
-GET /api/events/completed
-🛠️ Screenshots
-(Add screenshots of your Web UI and Postman responses here if available)
+💻 Project Requirements
+To run this project successfully, you need:
 
-📂 Postman Collection
-The Postman collection for API testing is included in the repo as:
-event_scheduler_postman_collection.json
+Python installed on your system
 
-💡 Future Enhancements
-Improved UI with Bootstrap or Tailwind CSS
+Flask library installed (can be done using pip)
 
-Toast notifications for actions
+Basic understanding of how to run Python scripts
 
-Database integration (SQLite or MongoDB)
+A web browser (to access the interface)
 
-Email or SMS reminders
+Postman or similar tools (optional, for API testing)
 
-Streamlit or React frontend
+🚀 Key Functionalities
+Web-based interface to easily create and manage events
 
-✨ Author
+Data is stored in a JSON file - no external database required
+
+API endpoints to perform all actions programmatically
+
+Prevents creation of events in the past
+
+Prevents editing of completed events
+
+Console alerts for upcoming events within 24 hours
+
+Filtering options to easily view only upcoming or completed events
+
+💡 Ideal for Learning
+This project is a great learning tool for:
+
+Beginners exploring Flask web development
+
+Understanding how to handle forms and API routes
+
+Basic data persistence without databases
+
+Working with dates and times in Python
+
+Running background tasks using threading
+
+✨ Future Scope
+Improved UI with modern CSS frameworks like Bootstrap or Tailwind
+
+Notifications for users (browser popups or emails)
+
+Database integration (SQLite, MongoDB)
+
+Deployment to hosting platforms like Render or Railway
+
+Frontend upgrade using Streamlit 
+
+👩‍💻 Author
 Hemalatha Vallabhaneni
-Aspiring Data Scientist & Python Developer
+Aspiring Data Scientist and Python Developer
 
